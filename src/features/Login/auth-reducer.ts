@@ -75,12 +75,3 @@ export const logoutTC = (): AppThunk => (dispatch) => {
             handleServerNetworkError(error, dispatch)
         })
 }
-
-// types
-
-// type ActionsType = ReturnType<typeof setIsLoggedIn>
-// type InitialStateType = {
-//     isLoggedIn: boolean
-// }
-
-// type ThunkDispatch = Dispatch<ActionsType | SetAppStatusActionType | SetAppErrorActionType>
