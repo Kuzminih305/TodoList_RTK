@@ -5,8 +5,8 @@ import {
     addTodolistTC,
     changeTodolistTitleTC,
     FilterValuesType,
-    removeTodolistTC, setTodoListsTC,
-    TodolistDomainType, todoListsActions
+    removeTodolistTC,
+    TodolistDomainType, todoListsActions, todoListsThunks
 } from './todolists-reducer'
 import { TasksStateType, tasksThunks} from './tasks-reducer'
 import { TaskStatuses } from 'api/todolists-api'
@@ -31,7 +31,7 @@ export const TodoListsList: React.FC<PropsType> = ({demo = false}) => {
         if (demo || !isLoggedIn) {
             return;
         }
-        const thunk = setTodoListsTC()
+        const thunk = todoListsThunks.setTodoList()
 			dispatch(thunk)
     }, [])
 

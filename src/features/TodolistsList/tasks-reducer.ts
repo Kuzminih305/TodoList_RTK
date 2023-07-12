@@ -1,4 +1,4 @@
-import {todoListsActions} from "./todolists-reducer";
+import {todoListsActions, todoListsThunks} from "./todolists-reducer";
 import {
     AddTaskArgType, DeleteTaskArgType,
     TaskPriorities,
@@ -57,7 +57,7 @@ const slice = createSlice({
             .addCase(todoListsActions.deleteTodoList, (state, action) => {
                 delete state[action.payload.todoListId]
             })
-            .addCase(todoListsActions.setTodoLists, (state, action) => {
+            .addCase(todoListsThunks.setTodoList.fulfilled, (state, action) => {
                 action.payload.todoLists.forEach((tl) => {
                     state[tl.id] = []
                 })
