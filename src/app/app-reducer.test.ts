@@ -1,4 +1,5 @@
 import {appActions, AppInitialStateType, appReducer} from './app-reducer'
+import {UserDataType} from "common/api/common-api";
 
 
 let startState: AppInitialStateType;
@@ -8,6 +9,7 @@ beforeEach(() => {
 		error: null,
 		status: 'idle',
 		isInitialized: false,
+		userData: null as UserDataType | null
 	}
 })
 

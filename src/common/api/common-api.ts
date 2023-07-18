@@ -1,5 +1,4 @@
 import axios from 'axios'
-import {UpdateDomainTaskModelType} from "features/TodolistsList/tasks-reducer";
 
 export const instance = axios.create({
     baseURL: 'https://social-network.samuraijs.com/api/1.1/',
@@ -14,6 +13,10 @@ export type ResponseType<D = {}> = {
     messages: Array<string>
     data: D
 }
-
+export type UserDataType = {
+    id: number,
+    email: string,
+    login: string
+}
 
 

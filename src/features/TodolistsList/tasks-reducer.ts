@@ -2,14 +2,15 @@ import { todoListsThunks} from "./todolists-reducer";
 import {createSlice} from "@reduxjs/toolkit";
 import {appActions} from "app/app-reducer";
 import {createAppAsyncThunk, handleServerAppError, handleServerNetworkError} from "common/utils";
+import {TaskPriorities, TaskStatuses} from "common/enums";
 import {
     AddTaskArgType,
     DeleteTaskArgType,
     TaskType,
-    todolistsAPI,
-    UpdateTaskArgType, UpdateTaskModelType
-} from "features/TodolistsList/todolists-api";
-import {TaskPriorities, TaskStatuses} from "common/enums";
+    UpdateTaskArgType,
+    UpdateTaskModelType
+} from "features/TodolistsList/todoLists-types";
+import {todolistsAPI} from "features/TodolistsList/todolists-api";
 
 
 
