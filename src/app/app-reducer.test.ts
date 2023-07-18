@@ -1,12 +1,13 @@
 import {appActions, AppInitialStateType, appReducer} from './app-reducer'
 
+
 let startState: AppInitialStateType;
 
 beforeEach(() => {
 	startState = {
 		error: null,
 		status: 'idle',
-		isInitialized: false
+		isInitialized: false,
 	}
 })
 

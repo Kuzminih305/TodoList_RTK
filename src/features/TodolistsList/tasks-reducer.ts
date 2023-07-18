@@ -6,11 +6,11 @@ import {
     TaskType,
     todolistsAPI, UpdateTaskArgType,
     UpdateTaskModelType,
-} from "api/todolists-api";
-import {handleServerAppError, handleServerNetworkError} from "utils/error-utils";
+} from "common/api/todolists-api";
 import {createSlice} from "@reduxjs/toolkit";
 import {appActions} from "app/app-reducer";
-import {createAppAsyncThunk} from "utils/create-app-async-thunk";
+import {createAppAsyncThunk, handleServerAppError, handleServerNetworkError} from "common/utils";
+
 
 
 const slice = createSlice({
@@ -48,7 +48,7 @@ const slice = createSlice({
                 let tasksForTodoList = state[action.payload.task.todoListId]
                 tasksForTodoList.unshift(action.payload.task)
             })
-            .addCase(fetchTasksTC.fulfilled, (state, action) => {
+            .addCase(fetchTasks.fulfilled, (state, action) => {
                 state[action.payload.todolistId] = action.payload.tasks
             })
             .addCase(todoListsThunks.addTodoList.fulfilled, (state, action) => {
@@ -69,7 +69,7 @@ const slice = createSlice({
 // thunks
 
 
-const fetchTasksTC = createAppAsyncThunk<
+const fetchTasks = createAppAsyncThunk<
     { tasks: TaskType[], todolistId: string },
     string
 >('tasks/fetchTasksTC', async (todolistId, thunkAPI) => {
@@ -243,4 +243,4 @@ export type TasksStateType = {
     [key: string]: Array<TaskType>;
 };
 export const tasksReducer = slice.reducer
-export const tasksThunks = { fetchTasksTC, addTask, updateTask, deleteTask }
+export const tasksThunks = { fetchTasksTC: fetchTasks, addTask, updateTask, deleteTask }
