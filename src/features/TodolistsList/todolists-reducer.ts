@@ -1,7 +1,12 @@
-import {DeleteTodoListArgType, todolistsAPI, TodolistType, UpdateTodoListTitleArgType} from "common/api/todolists-api";
 import {appActions, RequestStatusType} from "app/app-reducer";
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {createAppAsyncThunk, handleServerNetworkError} from "common/utils";
+import {
+  DeleteTodoListArgType,
+  todolistsAPI,
+  TodolistType,
+  UpdateTodoListTitleArgType
+} from "features/TodolistsList/todolists-api";
 
 
 
