@@ -1,9 +1,8 @@
-import {Dispatch} from 'redux'
 import {authActions} from "features/Login/auth-reducer";
 import { createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {authAPI} from "features/Login/auth-api";
-import {UserDataType} from "common/api/common-api"
-import {createAppAsyncThunk, handleServerAppError, handleServerNetworkError} from "common/utils";
+import {createAppAsyncThunk, handleServerNetworkError} from "common/utils";
+import {UserDataType} from "common/types/common-types";
 
 
 
@@ -41,22 +40,24 @@ const slice = createSlice({
 })
 
 const initializeApp = createAppAsyncThunk<
-    {user: UserDataType}
->('app/initializeApp', async (arg, thunkAPI) => {
+    {user: UserDataType},
+    void
+>('app/initializeApp', async (_, thunkAPI) => {
     const {dispatch, rejectWithValue} = thunkAPI
     try {
       const res =  await authAPI.me()
             if (res.data.resultCode === 0) {
                 dispatch(authActions.setIsLoggedIn({isLoggedIn: true}));
-                dispatch(appActions.setIsInitialized({isInitialized: true}))
                 return {user: res.data.data}
             } else {
-                handleServerAppError(res.data, dispatch)
+                // handleServerAppError(res.data, dispatch)
                 return rejectWithValue(null)
             }
     } catch (e) {
         handleServerNetworkError(e, dispatch)
         return rejectWithValue(null)
+    } finally {
+        dispatch(appActions.setIsInitialized({isInitialized: true}))
     }
 })
 // export const initializeAppTC = () => (dispatch: Dispatch) => {

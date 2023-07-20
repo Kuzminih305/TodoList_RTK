@@ -19,7 +19,7 @@ import {
 import { Menu } from '@mui/icons-material'
 import {TodoListsList} from "features/TodolistsList/TodolistsList";
 import {authThunks} from "features/Login/auth-reducer";
-import {UserDataType} from "common/api/common-api";
+import {UserDataType} from "common/types/common-types";
 
 type PropsType = {
 	demo?: boolean

@@ -1,5 +1,5 @@
 import {appActions, AppInitialStateType, appReducer} from './app-reducer'
-import {UserDataType} from "common/api/common-api";
+import {UserDataType} from "common/types/common-types";
 
 
 let startState: AppInitialStateType;
